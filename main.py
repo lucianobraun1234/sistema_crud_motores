@@ -111,7 +111,7 @@ def inserir():
 @app.route('/alterar', methods=['POST']) # Nova rota
 def alterar():
     senha=request.headers['Authentication']
-    if senha!='Bearer 57027689-5':
+    if senha!='Bearer xxx':
         print("senha incorreta")
         return jsonify("senha incorreta")
     
@@ -162,7 +162,7 @@ def alterar():
 def historico():
     #print(request.args.get)
     senha=request.headers['Authentication']
-    if senha!='Bearer 57027689-5':
+    if senha!='Bearer xxx':
         print("senha incorreta")
         return jsonify("senha incorreta")
    
@@ -228,7 +228,7 @@ def delete():
             senha=request.headers['Authentication']
         except:
             return jsonify('Acesso negado')
-        if senha!='Bearer 57027689-5':
+        if senha!='Bearer xxx':
             print("senha incorreta")
             return jsonify("senha incorreta")
         indexador=request.form['indexador']
@@ -299,6 +299,6 @@ def index():
 
 
 if __name__ == '__main__':
-  #serve(app, host='10.75.243.115', port=5000)
+  #serve(app, host='xxx', port=5000)
   app.run(debug=True) # Executa a aplicação
-  #app.run( host='10.75.200.88', port=5150)
+  #app.run( host='xxx', port=5150)

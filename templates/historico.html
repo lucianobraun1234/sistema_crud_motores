@@ -1,0 +1,1084 @@
+<html> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.22.2/sweetalert2.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <!-- Optional JavaScript; choose one of the two! -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    
+
+
+        
+       
+        <title>Sistema de dimensionamento dos acessórios do motor</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+<style>
+   
+    .branco1{
+        color:white;
+        float: right;
+    }
+    @media (max-width: 1000px)
+{
+    .bordas_brancas{
+        border-color:white;
+    }
+    .filtro2{
+        font-size:12px;float:right
+    }
+  .brancofundo
+   {
+    color:white;
+        float:right;
+        font-size:24px;
+   }
+   .cinza{
+        background-color:grey;
+        color:white;
+        font-size:10px;
+        height:50px
+
+    }
+    .cinza_claro{
+        background-color:rgb(219, 208, 208);
+        color:black;
+        font-size:10px;
+        
+        height:50px
+    }
+    .branco{
+        background-color: white;
+        color:black;
+        font-size:10px;
+        
+        height:50px
+    }
+    .aumento{
+    font-size:14px
+ }
+
+}
+@media (min-width: 1001px){
+    .largura_input{
+        width:300px;
+    }
+    .bordas_brancas{
+        border-radius:20;
+        border-color:white;
+        background-color: #96D4D4;
+    }
+    .filtro2{
+        font-size:16px;float:right
+    }
+    .aumento{
+    font-size:20px
+ }
+    .brancofundo{
+        color:white;
+        float:right;
+        font-size:34px
+    }
+    .cinza{
+        background-color:grey;
+        color:white;
+        font-size:14px;
+        height:50px
+
+    }
+    .cinza_claro{
+        background-color:rgb(219, 208, 208);
+        color:black;
+        font-size:14px;
+        
+        height:50px
+    }
+    .branco{
+        background-color: white;
+        color:black;
+        font-size:14px;
+        
+        height:50px
+    }
+}
+    
+
+ .margem_esquerda{
+    float:left;
+    width:200px;
+    height:120px;
+    background-color:white;
+   
+  
+ }
+ .margem_esquerda2{
+    float:left;
+    width:190px;
+    height:120px;
+    background-image: url('../static/img/baner3.png'); 
+    background-size:cover;
+    
+ }
+ 
+ label{
+     font-size:12px;
+ }
+ .vermelho1{
+    background-color:red;
+ }
+ .preto{
+     background-color:black;
+     color:white;
+     font-size:14px;
+ }
+ .preto:hover{
+     transition:.5s;
+     color:black;
+     background-color:white;
+ }
+ .produtos{
+     display:none;
+ }
+ .compradores{
+     display:block;
+ }
+ .cinza1{
+    font-weight:bold;
+     background-color:grey;
+     color:white;
+     font-size:14px;
+ }
+ .cinza1:hover{
+     transition:.5s;
+     color:grey;
+     background-color:white;
+ }
+ .imagem{
+    height:130px;
+   width:200px;
+    z-index: 1;
+    position:absolute;
+    top: 0px;
+     left: 0px;
+   
+  
+ }
+ .imagem11{
+    height:130px;
+
+  
+ }
+ .imagem_fundo{
+    height:120px;
+    background-color:rgb(47, 0, 255); 
+    
+    float:right;
+    
+   
+   
+   
+  
+ }
+ 
+ #textodata{
+  display:none;
+  float:right
+ }
+ #textocomum{
+  
+  float:right
+ }
+ .imagem_fundo1{
+    height:250px;
+    z-index: -1;
+    height: 600px;
+    width: 500px;
+    position: absolute;
+    top: 200px;
+   right: 250px;
+   
+  
+ }
+ #carregagif{
+    display:none;
+
+ }
+ .cinza{
+    background-color: dimgray;
+    color:white
+}
+.imagem_fundo2{
+ 
+    background-image: url('../static/img/baner1.png'); 
+    background-size:cover;
+    width:100%;
+    float:left
+   
+  
+ }
+
+ .total{
+    width:100%;
+    height:120px;
+    background-color:red; 
+ }
+
+ .preto1{
+    font-weight: bold;
+     color:black;
+     font-size:16px;
+ }
+ .preto{
+     background-color:black;
+     color:white;
+     font-size:14px;
+ }
+ .preto:hover{
+     transition:.5s;
+     color:black;
+     background-color:white;
+ }
+ .produtos{
+     display:none;
+ }
+ .compradores{
+     display:block;
+ }
+ .cinza1{
+    font-weight:bold;
+     background-color:grey;
+     color:white;
+     font-size:14px;
+ }
+ .cinza1:hover{
+     transition:.5s;
+     color:grey;
+     background-color:white;
+ }
+ .imagem{
+    height:130px;
+    z-index: 1;
+    position:absolute;
+    top: 0px;
+     left: 0px;
+   
+  
+ }
+ .imagem11{
+    height:130px;
+
+  
+ }
+ .imagem_fundo{
+    height:120px;
+    background-color:rgb(7,9,185); 
+    
+    float:right;
+    
+   
+   
+   
+  
+ }
+ 
+ #textodata{
+  display:none;
+ }
+ .imagem_fundo1{
+    height:250px;
+    z-index: -1;
+    height: 600px;
+    width: 500px;
+    position: absolute;
+    top: 200px;
+   right: 250px;
+   
+  
+ }
+ #carregagif{
+    display:none;
+
+ }
+ .cinza{
+    background-color: dimgray;
+    color:white
+}
+.imagem_fundo2{
+ 
+    background-image: url('../static/img/baner1.png'); 
+    background-size:cover;
+    width:100%;
+    float:left
+   
+  
+ }
+
+ .total{
+    width:100%;
+    height:120px;
+    background-color:rgb(7,9,185); 
+ }
+ .total2{
+        width:100%;
+        height:60px;
+       
+     }
+     .espaco{
+        width:120px;
+        float:left
+     }
+     .espaco2{
+        width:800px;
+        float:left
+     }
+     .transparente{
+        background-color:transparent;
+     }
+     .transparente:hover{
+        transition:1s;
+        background-color:white;
+     }
+
+     table, th, td {
+        border-spacing: 2;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+</style>
+
+
+
+
+<body>
+    <div class="total">
+        <div class="margem_esquerda">
+            <h1>&nbsp;</h1>
+          
+            
+            <img src='../static/img/brasao1.png' class="imagem">
+           </div>
+           <div class="margem_esquerda2">
+            &nbsp;
+           </div>
+           <div class=" imagem_fundo">
+            
+         <br><br><br>
+            <H1 class="brancofundo">Sistema de dimensionamento de motores &nbsp; &nbsp; &nbsp;</H1>
+            <br><br><br>
+            <div id="demo">
+
+            </div>
+            <H1 class="brancofundo" > &nbsp; &nbsp; &nbsp;</H1>
+           </div> 
+       </div>
+      
+       <div class="total2  imagem_fundo2">
+        <div class="espaco">
+            <h3>&nbsp;</h3>
+        </div>
+        <div class="espaco2">
+            <br>
+            <a href='/Pesquisa' class=" preto1">Pesquisa</a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp; 
+            <a href='/inserir' class=" preto1">Cadastro</a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp; 
+            <button type="button" class="btn transparente" onclick="download_geral()">Download da planilha geral</button>
+
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp; 
+            <button type="button" class="btn transparente" onclick="inserir_teste()">inserir cadastro</button>
+           
+
+        </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            
+            
+          
+   
+            </div>
+        </div>
+   
+     </div>
+     <br><br><br>
+   
+    <div class="container">
+       <div class="row " >
+        
+        
+        <div class="col-md-12" >
+            <button type="button" class="btn btn-primary filtro2" onclick="pesquisar()"> pesquisar</button>
+            <label style="font-size:16px;float:right">&nbsp; &nbsp; </label>
+            
+                <input type="text" name="potencia" id="potencia" style="font-size:12px;float:right">
+                <label style="font-size:16px;float:right">Potência em CV:&nbsp; &nbsp;</label>
+                <label style="font-size:16px;float:right">&nbsp; &nbsp; </label>
+                <input type="text" name="quantidade" id="quantidade" style="font-size:12px;float:right">
+                <label style="font-size:16px;float:right">Quantidade:&nbsp; &nbsp;</label>
+                <label style="font-size:16px;float:right">&nbsp; &nbsp; </label>
+                <!--
+               <select name="marca"  style="font-size:16px;float:right">
+                <option value="marca1">marca1</option>
+                <option value="marca2">marca2</option>
+               </select>
+               <label style="font-size:16px;float:right">Marca:&nbsp; &nbsp;</label>
+               -->
+                
+
+             
+             
+         
+         
+       
+            </div>
+            <div class="row">
+            <br>
+
+           
+            <!--<img src='../static/img/bras2.png' class="imagem_fundo1">-->
+
+           
+           <div class="col-md-12 " align="center">
+
+         
+          
+        
+           <br><br><br>
+           <div id="carregagif">
+            <img src='../static/img/loading-gif.gif' class="imagem11">
+
+
+           </div>
+           <br>
+         
+           
+        </div>
+       </div>
+  
+    </div>
+    </div>
+    <div id="listavendas">
+
+
+    </div>
+    <!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title">Painel de controle</h5>
+          <button type="button" class="close"  onclick="fechar()"  data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <H3>&nbsp;</H3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary aumento" onclick="editarselecao()">Editar arquivo</button>
+          <button type="button" class="btn btn-primary aumento" onclick="download_excel()">Download da planilha</button>
+          <button type="button" class="btn btn-secondary aumento"  onclick="fechar()" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+
+     <!-- Modal de edição -->
+      
+   
+     
+    <!-- Modal -->
+    <div class="modal fade" id="edicao_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+                    <h1 class="modal-title">Painel de controle</h5>
+                        <button type="button" class="close"  onclick="fechar()"  data-dismiss="modal" aria-label="Close"></button>
+    			</div>
+    			<div class="modal-body">
+                    <table   class="bordas_brancas">
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Potência em cv</label></td>
+                            <td class="bordas_brancas"><input id="potencia_cv" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Corrente em amperes</label></td>
+                            <td class="bordas_brancas"><input id="corrente" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Disjuntor motor</label></td>
+                            <td class="bordas_brancas"><input id="disjuntor_motor" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Tipo</label></td>
+                            <td class="bordas_brancas"><input id="tipo" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Suporte de conexao</label></td>
+                            <td class="bordas_brancas"><input id="suporte_de_conexao" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contatora</label></td>
+                            <td class="bordas_brancas"><input id="contatora"  class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contato auxiliar frontal</label></td>
+                            <td class="bordas_brancas"><input id="contato_auxiliar_frontal"  class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Conector saque</label></td>
+                            <td class="bordas_brancas"><input id="conector_saque" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Seccionador fusível</label></td>
+                            <td class="bordas_brancas"><input id="seccionador_fusivel" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Soft-starter</label></td>
+                            <td class="bordas_brancas"><input id="soft-starter" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contatora de comando</label></td>
+                            <td class="bordas_brancas"><input id="contatora_de_comando"  class="largura_input" type="text"></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <Label>Insira a senha para alterações na estrutura</Label>
+                    <input type="text" id="senha_mudanca"><br><br>
+                    <button type="button" class="btn btn-primary aumento"  onclick="alterar()" data-dismiss="modal">Alterar</button>
+    			</div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-secondary aumento"  onclick="fechar()" data-dismiss="modal">Fechar</button>
+    			</div>
+    		</div><!-- /.modal-content -->
+    	</div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="insercao_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	<div class="modal-dialog">
+    		<div class="modal-content">
+    			<div class="modal-header">
+                    <h1 class="modal-title">Painel de controle</h5>
+                        <button type="button" class="close"  onclick="fechar()"  data-dismiss="modal" aria-label="Close"></button>
+    			</div>
+    			<div class="modal-body">
+                    <table   class="bordas_brancas">
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Potência em cv</label></td>
+                            <td class="bordas_brancas"><input id="potencia_cv2" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Corrente em amperes</label></td>
+                            <td class="bordas_brancas"><input id="corrente2" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Disjuntor motor</label></td>
+                            <td class="bordas_brancas"><input id="disjuntor_motor2" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Tipo</label></td>
+                            <td class="bordas_brancas"><input id="tipo2" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Suporte de conexao</label></td>
+                            <td class="bordas_brancas"><input id="suporte_de_conexao2" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contatora</label></td>
+                            <td class="bordas_brancas"><input id="contatora2"  class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contato auxiliar frontal</label></td>
+                            <td class="bordas_brancas"><input id="contato_auxiliar_frontal2"  class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Conector saque</label></td>
+                            <td class="bordas_brancas"><input id="conector_saque2" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Seccionador fusível</label></td>
+                            <td class="bordas_brancas"><input id="seccionador_fusivel2" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Soft-starter</label></td>
+                            <td class="bordas_brancas"><input id="soft-starter2" class="largura_input" type="text"></td>
+                        </tr>
+                        <tr class="bordas_brancas">
+                            <td class="bordas_brancas"> <label> Contatora de comando</label></td>
+                            <td class="bordas_brancas"><input id="contatora_de_comando2"  class="largura_input" type="text"></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                    <Label>Insira a senha para inserções na estrutura</Label>
+                    <input type="text" id="senha_mudanca2"><br><br>
+                    <button type="button" class="btn btn-primary aumento"  onclick="inserir()" data-dismiss="modal">Criar</button>
+    			</div>
+    			<div class="modal-footer">
+    				<button type="button" class="btn btn-secondary aumento"  onclick="fechar()" data-dismiss="modal">Fechar</button>
+    			</div>
+    		</div><!-- /.modal-content -->
+    	</div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   
+    
+</body>
+</html>
+
+
+
+<script>
+function inserir_teste(){
+    
+   
+    $("#insercao_modal").modal('show');
+} 
+function inserir(){
+    console.log("entrou na inserção");
+    var id=sessionStorage.getItem('id_muda');
+    var form_data= new FormData();
+    form_data.append("id",id)
+    form_data.append("potencia_cv", document.getElementById("potencia_cv2").value)
+    form_data.append("corrente", document.getElementById("corrente2").value)
+    form_data.append("disjuntor_motor", document.getElementById("disjuntor_motor2").value)
+    form_data.append("tipo", document.getElementById("tipo").value)
+    form_data.append("suporte_de_conexao", document.getElementById("suporte_de_conexao2").value)
+    form_data.append("contatora", document.getElementById("contatora2").value)
+    form_data.append("contato_auxiliar_frontal", document.getElementById("contato_auxiliar_frontal2").value)
+    form_data.append("conector_saque", document.getElementById("conector_saque2").value)
+    form_data.append("seccionador_fusivel", document.getElementById("seccionador_fusivel2").value)
+    form_data.append("soft_starter", document.getElementById("soft-starter2").value)
+    form_data.append("contatora_de_comando", document.getElementById("contatora_de_comando2").value)
+    form_data.append("senha", document.getElementById("senha_mudanca2").value)
+    console.log("formulario:",form_data);
+    $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5000/inserir',
+               //url: 'http://10.75.251.104:5000/inserir',
+                data: form_data,
+                beforeSend : function(){
+                    
+                     $("#carregabotao").hide();
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                   
+                       $("#myModal").modal('hide');
+                      
+                    
+                 },
+                success: function (data) {
+                    alert(data);
+                   
+                   
+                   
+                   
+                },
+                error: function(erro){
+                    alert(data);
+                    
+                   
+                    
+                },
+            });
+}
+function fechar(){
+    $("#myModal").modal('hide');
+}
+function editarselecao(){
+    download_excel1();
+    $("#edicao_modal").modal('show');
+   
+    console.log("teste");
+    var delayInMilliseconds = 1000; //1 second
+
+   
+   
+   
+    
+    
+}
+//iniciar a funcao ao carregar a pagina
+window.onload = function() {
+   
+      
+        
+    
+  // Sua função aqui
+  
+};
+function download_excel1(){
+    var id=sessionStorage.getItem('id_muda');
+    var qtd=sessionStorage.getItem('quantidade');
+    console.log("valor do id:",id,"quantidade:",qtd);
+    $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5000/historico?historico=sim&filtro=pesquisa_id&cv='+id+'&qtd='+qtd,
+               
+               // url: 'http://10.75.200.88:5150/historico?cpf='+cpf+'&historico=sim&filtro=total&texto=total',
+               
+                beforeSend : function(){
+                    
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                   
+                      console.log("Complete!");
+                 },
+                success: function (data) {
+                    console.log("valor do id:",data);
+
+
+                   
+                       document.getElementById("potencia_cv").value = data[0][1];
+                       document.getElementById("corrente").value = data[0][2];
+                       document.getElementById("disjuntor_motor").value = data[0][3];
+                       document.getElementById("tipo").value = data[0][4];
+                       document.getElementById("suporte_de_conexao").value = data[0][5];
+                       document.getElementById("contatora").value = data[0][5];
+                       document.getElementById("contato_auxiliar_frontal").value = data[0][6];
+                       document.getElementById("conector_saque").value = data[0][8];
+                       document.getElementById("seccionador_fusivel").value = data[0][9];
+                       document.getElementById("soft-starter").value = data[0][10];
+                       document.getElementById("contatora_de_comando").value = data[0][11];
+                    //document.getElementById("titulo").value="";
+                   // alert(data)
+                   // console.log(data);
+                    //enviando pro excel pra criar a planilha:
+                   
+
+
+                   
+            
+
+
+                   
+                   
+                
+
+                },
+                error: function(erro){
+                    alert("Requisição não enviada, por favor tente novamente")
+                    //$("#carregagif").hide();
+                    
+                },
+            });
+}
+function alterar(){
+    var id=sessionStorage.getItem('id_muda');
+    var form_data= new FormData();
+    form_data.append("id",id)
+    form_data.append("potencia_cv", document.getElementById("potencia_cv").value)
+    form_data.append("corrente", document.getElementById("corrente").value)
+    form_data.append("disjuntor_motor", document.getElementById("disjuntor_motor").value)
+    form_data.append("tipo", document.getElementById("tipo").value)
+    form_data.append("suporte_de_conexao", document.getElementById("suporte_de_conexao").value)
+    form_data.append("contatora", document.getElementById("contatora").value)
+    form_data.append("contato_auxiliar_frontal", document.getElementById("contato_auxiliar_frontal").value)
+    form_data.append("conector_saque", document.getElementById("conector_saque").value)
+    form_data.append("seccionador_fusivel", document.getElementById("seccionador_fusivel").value)
+    form_data.append("soft_starter", document.getElementById("soft-starter").value)
+    form_data.append("contatora_de_comando", document.getElementById("contatora_de_comando").value)
+    form_data.append("senha", document.getElementById("senha_mudanca").value)
+    $.ajax({
+                type: 'POST',
+                url: 'http://localhost:5000/alterar',
+              // url: 'http://10.75.251.104:5000/inserir',
+                data: form_data,
+                beforeSend : function(){
+                    
+                     $("#carregabotao").hide();
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                    document.getElementById("potencia_cv").value = "";
+                       document.getElementById("corrente").value = "";
+                       document.getElementById("disjuntor_motor").value = "";
+                       document.getElementById("tipo").value = "";
+                       document.getElementById("suporte_de_conexao").value = "";
+                       document.getElementById("contatora").value = "";
+                       document.getElementById("contato_auxiliar_frontal").value = "";
+                       document.getElementById("conector_saque").value = "";
+                       document.getElementById("seccionador_fusivel").value = "";
+                       document.getElementById("soft-starter").value = "";
+                       document.getElementById("contatora_de_comando").value = "";
+                       document.getElementById("senha_mudanca").value = "";
+                       $("#myModal").modal('hide');
+                      
+                    
+                 },
+                success: function (data) {
+                    alert(data);
+                    document.getElementById('listavendas').innerHTML="";
+                    
+                   
+                   
+                   
+                },
+                error: function(erro){
+                    alert(data);
+                    
+                   
+                    
+                },
+            });
+}
+function download_geral(){
+    $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5000/historico?historico=sim&filtro=total_download',
+               
+               // url: 'http://10.75.200.88:5150/historico?cpf='+cpf+'&historico=sim&filtro=total&texto=total',
+               
+                beforeSend : function(){
+                    
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                   
+                      console.log("Complete!");
+                 },
+                success: function (data) {
+                    var delayInMilliseconds = 1000; //1 second
+
+                  setTimeout(function() {
+                    window.open('http://localhost:5000/download', '_blank');
+                         }, delayInMilliseconds);
+
+
+                   
+                       
+                    //document.getElementById("titulo").value="";
+                   // alert(data)
+                   // console.log(data);
+                    //enviando pro excel pra criar a planilha:
+                   
+
+
+                   
+            
+
+
+                   
+                   
+                
+
+                },
+                error: function(erro){
+                    alert("Requisição não enviada, por favor tente novamente")
+                    //$("#carregagif").hide();
+                    
+                },
+            });
+}
+function download_excel(){
+    var id=sessionStorage.getItem('id_muda');
+    var qtd=sessionStorage.getItem('quantidade');
+    console.log("valor do id:",id,"quantidade:",qtd);
+    $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5000/historico?historico=sim&filtro=pesquisa_id&cv='+id+'&qtd='+qtd,
+               
+               // url: 'http://10.75.200.88:5150/historico?cpf='+cpf+'&historico=sim&filtro=total&texto=total',
+               
+                beforeSend : function(){
+                    
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                   
+                      console.log("Complete!");
+                 },
+                success: function (data) {
+                    console.log("valor do id:",data);
+
+
+                   
+                       
+                    //document.getElementById("titulo").value="";
+                   // alert(data)
+                   // console.log(data);
+                    //enviando pro excel pra criar a planilha:
+                    window.open('http://localhost:5000/download', '_blank');
+
+
+                   
+            
+
+
+                   
+                   
+                
+
+                },
+                error: function(erro){
+                    alert("Requisição não enviada, por favor tente novamente")
+                    //$("#carregagif").hide();
+                    
+                },
+            });
+}
+function pegaid(id){
+    var qtd=document.getElementById('quantidade').value;
+    console.log('valor do id:',id)
+    //$("#exampleModal").show();
+     sessionStorage.setItem('id_muda',id);
+     sessionStorage.setItem('quantidade',qtd);
+    $("#myModal").modal('show');
+    console.log("deu certo");
+}
+ function carrega1(){
+     //caso seja arquivo jpg
+     var qtd= document.getElementById('quantidade').value;
+     var qtd1=parseInt(qtd);
+     qtd1=qtd1*3;
+     var sqtd1= qtd1.toString();
+     var cv=document.getElementById('potencia').value;
+     $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5000/historico?qtd='+qtd+'&historico=sim&filtro=total&cv='+cv,
+               
+               // url: 'http://10.75.200.88:5150/historico?cpf='+cpf+'&historico=sim&filtro=total&texto=total',
+               
+                beforeSend : function(){
+                    
+                     $("#carregabotao").hide();
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                    $("#carregagif").hide();
+                    $("#carregabotao").show();
+                      console.log("Complete!");
+                 },
+                success: function (data) {
+                    $("#carregagif").hide();
+                      // document.getElementById("arquivo").value = "";
+                    //document.getElementById("titulo").value="";
+                   // alert(data)
+                    console.log(data);
+                    //$("$carregagif").hide();
+                     // Handle success
+            //console.log(response.data)
+            var resultado=data;
+            var limite=resultado.length;
+            console.log(limite);
+            var html="<table  width='100%' ><tr class='cinza'><td> </td><td> &nbsp; &nbsp;Potência</td><td>&nbsp; &nbsp;  Corrente</td><td>&nbsp; &nbsp;Disjuntor Motor </td>";
+            html+="<td>&nbsp; &nbsp;tipo</td><td>&nbsp; &nbsp;Suporte de conexão</td><td>&nbsp; &nbsp;Contatora</td><td>&nbsp; &nbsp;Contato auxiliar frontal</td><td>&nbsp; &nbsp;Conector_saque</td>"
+            html+="<td>&nbsp; &nbsp; Seccionador_fusível</td><td>&nbsp; &nbsp; Soft-Starter</td> <td>&nbsp; &nbsp;Contatora_de_comando</td></tr>";  
+            for(var i=0; i<limite;i++){
+                
+              
+               
+                    if(i%2==0){
+                    var data=resultado[i][3];
+                    data=data.replaceAll('_',' ')
+                    html+="<tr class='branco'><td>&nbsp; &nbsp;<button type='button' class='btn btn-success btn-lg'  onclick=pegaid("+resultado[i][0]+")>"+  "<i class='fa fa-pencil  style='font-size:30px' aria-hidden='true'></i>";
+                   html+= "</button></td><td>&nbsp; &nbsp;"+ resultado[i][1];
+                    html+="</td><td>&nbsp; &nbsp;"+resultado[i][2]+"</td>";
+                    html+="<td>&nbsp; &nbsp;"+qtd+"x <br>"+resultado[i][3]+"&nbsp; &nbsp;</td> <td>&nbsp;"+resultado[i][4]+"&nbsp; &nbsp;</td><td>&nbsp;"+qtd+"x <br>"+resultado[i][5]+"&nbsp; &nbsp;</td><td>"+qtd+"x <br>"+resultado[i][6]+"&nbsp; &nbsp;</td><td>&nbsp;"+qtd+"x <br>"+resultado[i][7]+"&nbsp; &nbsp;</td><td>&nbsp;"+sqtd1+"x <br>"+resultado[i][8]+"&nbsp; &nbsp;</td>";
+                        html+="<td>&nbsp; &nbsp;"+resultado[i][9]+"&nbsp; &nbsp;</td> <td>&nbsp;"+resultado[i][10]+"&nbsp; &nbsp;</td><td>&nbsp;"+resultado[i][11]+"&nbsp; &nbsp;</td>";
+                       
+                        html+="</tr>";
+                }
+                else{
+                    var data=resultado[i][3];
+                    data=data.replaceAll('_',' ')
+                    html+="<tr class='cinza_claro'><td>&nbsp; &nbsp;<button type='button' class='btn btn-success btn-lg'  onclick=pegaid("+resultado[i][0]+")>"+  "<i class='fa fa-pencil  style='font-size:30px' aria-hidden='true'></i>";
+                   html+= "</button></td><td>&nbsp; &nbsp;"+ resultado[i][1];
+                    html+="</td><td>&nbsp; &nbsp;"+resultado[i][2]+"</td>";
+                    html+="<td>&nbsp; &nbsp;"+qtd+"x <br>"+resultado[i][3]+"&nbsp; &nbsp;</td> <td>&nbsp;"+resultado[i][4]+"&nbsp; &nbsp;</td><td>&nbsp;"+qtd+"x <br>"+resultado[i][5]+"&nbsp; &nbsp;</td><td>"+qtd+"x <br>"+resultado[i][6]+"&nbsp; &nbsp;</td><td>&nbsp;"+qtd+"x <br>"+resultado[i][7]+"&nbsp; &nbsp;</td><td>&nbsp;"+sqtd1+"x <br>"+resultado[i][8]+"&nbsp; &nbsp;</td>";
+                        html+="<td>&nbsp; &nbsp;"+resultado[i][9]+"&nbsp; &nbsp;</td> <td>&nbsp;"+resultado[i][10]+"&nbsp; &nbsp;</td><td>&nbsp;"+resultado[i][11]+"&nbsp; &nbsp;</td>";
+                       
+                        html+="</tr>";
+                }
+
+                
+                
+            
+            }
+            //html+="</table><br><br><button type='button' class='btn btn-success' style='font-size:16px' onclick='apagarselecao()'>apagar</button>"
+            html+="</table><br><br>"
+            document.getElementById('listavendas').innerHTML=html;
+            
+
+
+                   
+                   
+                
+
+                },
+                error: function(erro){
+                    alert("Requisição não enviada, por favor tente novamente")
+                    //$("#carregagif").hide();
+                    
+                },
+            });
+
+ }
+
+
+    function pesquisar(){
+        $("#carregagif").show();
+        setTimeout(carrega1, 500);
+       
+      
+       }
+           
+        
+       
+    
+    
+ 
+       
+       
+</script>

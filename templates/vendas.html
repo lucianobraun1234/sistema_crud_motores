@@ -1,0 +1,527 @@
+<html> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=10, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.22.2/sweetalert2.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <!-- Optional JavaScript; choose one of the two! -->
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap-grid.min.css" />
+            
+       
+        <title>OCR</title>
+    </head>
+    <style>
+   
+        .branco1{
+            color:white;
+            float: right;
+        }
+        @media (max-width: 900px)
+    {
+      .brancofundo
+       {
+        color:white;
+            float:right;
+            font-size:24px;
+       }
+       .cinza{
+            background-color:grey;
+            color:white;
+            font-size:14px;
+            height:50px
+    
+        }
+        .cinza_claro{
+            background-color:rgb(219, 208, 208);
+            color:black;
+            font-size:14px;
+            
+            height:50px
+        }
+        .branco{
+            background-color: white;
+            color:black;
+            font-size:14px;
+            
+            height:50px
+        }
+        .aumento{
+        font-size:14px
+     }
+    
+    }
+    @media (min-width: 901px){
+        .aumento{
+        font-size:20px
+     }
+        .brancofundo{
+            color:white;
+            float:right;
+            font-size:34px
+        }
+        .cinza{
+            background-color:grey;
+            color:white;
+            font-size:20px;
+            height:50px
+    
+        }
+        .cinza_claro{
+            background-color:rgb(219, 208, 208);
+            color:black;
+            font-size:20px;
+            
+            height:50px
+        }
+        .branco{
+            background-color: white;
+            color:black;
+            font-size:20px;
+            
+            height:50px
+        }
+    }
+        
+    
+     .margem_esquerda{
+        float:left;
+        width:130px;
+        height:120px;
+        background-color:white;
+       
+      
+     }
+     .margem_esquerda2{
+        float:left;
+        width:190px;
+        height:120px;
+        background-image: url('../static/img/baner3.png'); 
+        background-size:cover;
+        
+     }
+     
+     label{
+         font-size:12px;
+     }
+     .vermelho1{
+        background-color:red;
+     }
+     .preto{
+         background-color:black;
+         color:white;
+         font-size:14px;
+     }
+     .preto:hover{
+         transition:.5s;
+         color:black;
+         background-color:white;
+     }
+     .produtos{
+         display:none;
+     }
+     .compradores{
+         display:block;
+     }
+     .cinza1{
+        font-weight:bold;
+         background-color:grey;
+         color:white;
+         font-size:14px;
+     }
+     .cinza1:hover{
+         transition:.5s;
+         color:grey;
+         background-color:white;
+     }
+     .imagem{
+        height:130px;
+        z-index: 1;
+        position:absolute;
+        top: 0px;
+         left: 0px;
+       
+      
+     }
+     .imagem11{
+        height:130px;
+    
+      
+     }
+     .imagem_fundo{
+        height:120px;
+        background-color:red; 
+        
+        float:right;
+        
+       
+       
+       
+      
+     }
+     
+     #textodata{
+      display:none;
+     }
+     .imagem_fundo1{
+        height:250px;
+        z-index: -1;
+        height: 600px;
+        width: 500px;
+        position: absolute;
+        top: 200px;
+       right: 250px;
+       
+      
+     }
+     #carregagif{
+        display:none;
+    
+     }
+     .cinza{
+        background-color: dimgray;
+        color:white
+    }
+    .imagem_fundo2{
+     
+        background-image: url('../static/img/baner1.png'); 
+        background-size:cover;
+        width:100%;
+        float:left
+       
+      
+     }
+    
+     .total{
+        width:100%;
+        height:120px;
+        background-color:red; 
+     }
+    
+     .preto1{
+        font-weight: bold;
+         color:black;
+         font-size:16px;
+     }
+     .preto{
+         background-color:black;
+         color:white;
+         font-size:14px;
+     }
+     .preto:hover{
+         transition:.5s;
+         color:black;
+         background-color:white;
+     }
+     .produtos{
+         display:none;
+     }
+     .compradores{
+         display:block;
+     }
+     .cinza1{
+        font-weight:bold;
+         background-color:grey;
+         color:white;
+         font-size:14px;
+     }
+     .cinza1:hover{
+         transition:.5s;
+         color:grey;
+         background-color:white;
+     }
+     .imagem{
+        height:130px;
+        z-index: 1;
+        position:absolute;
+        top: 0px;
+         left: 0px;
+       
+      
+     }
+     .imagem11{
+        height:130px;
+    
+      
+     }
+     .imagem_fundo{
+        height:120px;
+        background-color:red; 
+        
+        float:right;
+        
+       
+       
+       
+      
+     }
+     
+     #textodata{
+      display:none;
+     }
+     .imagem_fundo1{
+        height:250px;
+        z-index: -1;
+        height: 600px;
+        width: 500px;
+        position: absolute;
+        top: 200px;
+       right: 250px;
+       
+      
+     }
+     #carregagif{
+        display:none;
+    
+     }
+     .cinza{
+        background-color: dimgray;
+        color:white
+    }
+    .imagem_fundo2{
+     
+        background-image: url('../static/img/baner1.png'); 
+        background-size:cover;
+        width:100%;
+        float:left
+       
+      
+     }
+    
+     .total{
+        width:100%;
+        height:120px;
+        background-color:red; 
+     }
+     .total2{
+        width:100%;
+        height:60px;
+       
+     }
+     .espaco{
+        width:120px;
+        float:left
+     }
+     .espaco2{
+        width:200px;
+        float:left
+     }
+    </style>
+    
+<body>
+   
+    
+       <!--<img src='../static/img/bras2.png' class="imagem_fundo1">-->
+       <div class="total">
+        <div class="margem_esquerda">
+            <h1>&nbsp;</h1>
+          
+            
+            <img src='../static/img/brasao1.png' class="imagem">
+           </div>
+           <div class="margem_esquerda2">
+            &nbsp;
+           </div>
+           <div class=" imagem_fundo">
+            
+         <br><br><br>
+            <H1 class="brancofundo"> OCR &nbsp; &nbsp; &nbsp;</H1>
+           </div> 
+       </div>
+        <div class="total2  imagem_fundo2">
+        <div class="espaco">
+            <h3>&nbsp;</h3>
+        </div>
+        <div class="espaco2">
+            <br>
+            <a href='/historico' class=" preto1">Histórico</a>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp; 
+            <a href='/inserir' class=" preto1">Cadastro</a>
+           
+
+        </div>
+
+    </div>
+  
+           
+            
+           
+    <div class="container">
+       
+       <div class="row">
+           <div class="col-md-12" align="center">
+               <H1>Inserir cadastro de OCR</H1>
+               <br><br>
+           </div>
+           <br><br>
+           <div class="col-md-12" align="center">
+            
+             
+              <!--<label align="center" >CPF</label><br>
+              <input type="text" id="cpf" name="responsavel" style='font-size:16px' align="center"><br><br> -->
+              <label align="center" >Arquivo em pdf</label><br>
+              <input type="file" name="files" id="arquivos" style='font-size:16px' align="center" accept="application/pdf"><br><br>
+           </div>
+           
+            <div class="col-md-12" align="center">
+                <br><br>
+                <button type="button" onclick="atualiza()" style='font-size:16px'  class="btn btn-primary"  align="center">Enviar</button>
+         
+                <br><br>
+              
+               <div id="carregagif">
+                <img src='../static/img/loading-gif.gif' class="imagem11">
+
+               </div>
+               <div id="precoproduto">
+
+               </div>
+               <br><br>
+               <div id="respostavendas">
+
+               </div>
+            </div>
+         
+       </div>
+  
+    </div>
+    
+</body>
+</html>
+
+<script>
+var filtroTeclas = function(event) {
+                                          return ((event.charCode >= 48 && event.charCode <= 57) || (event.keyCode == 45 || event.charCode == 46))
+                                          }
+function atualiza(){
+    $("#carregagif").show();
+    setTimeout(carrega1, 500);
+    
+
+            
+    
+        }
+        function carrega1(){
+            var form_data= new FormData();
+    var ins=document.getElementById("arquivos").files.length;
+    console.log("valor:",ins);
+    if(ins< 1 || ins==undefined){
+        $("#carregagif").hide();
+        alert("por favor, insira um pdf válido")
+        return;
+       
+    }
+           for (var x=0;x<ins;x++){
+            var tamanho=document.getElementById("arquivos").files[x].size;
+            tamanho=tamanho/1024;
+            console.log("tamanho:",tamanho);
+           
+            
+            form_data.append("files",document.getElementById("arquivos").files[x])
+            var mimeType = document.getElementById('arquivos').files[0].type;
+             if (mimeType != "application/pdf") { 
+                $("#carregagif").hide(); 
+                alert("insira um pdf válido");
+                return;
+             }
+
+           }
+           console.log("chegou até aqui");
+          // return;
+          var data = new Date();
+          //verificando se o dia é menor que 10
+          
+          var dia = String(data.getDate()).padStart(2, '0');
+          //verificando se o mes é menor que 10
+          var mes = String(data.getMonth() + 1).padStart(2, '0');
+          var horas=String(data.getHours() + 1).padStart(2, '0');
+          var minutos=String(data.getMinutes() + 1).padStart(2, '0');
+          var segundos=String(data.getSeconds() + 1).padStart(2, '0');
+          var datas = dia+'/'+mes+'/'+data.getFullYear()+'_'+horas+':'+minutos+':'+segundos;
+          console.log("data:",datas);
+         // return;
+         //var cpf=document.getElementById("cpf").value;
+         var cpf= sessionStorage.getItem('cpf');
+         console.log("cpf:",cpf);
+         if(cpf.length<8){
+            $("#carregagif").hide(); 
+                alert("insira um cpf válido");
+                return;
+         }
+           form_data.append("datas",datas);
+           form_data.append("cpf",cpf);
+        
+           
+           console.log("vai enviar");
+            //console.log(form_data)
+           // var senha= autenticar();
+            console.log("cpf:",cpf);
+            sessionStorage.setItem('cpf', cpf);
+
+           
+                //caso seja arquivo jpg
+                $.ajax({
+                type: 'POST',
+                //url: 'http://localhost:5000/inserir',
+               url: 'http://10.75.200.88:5150/inserir',
+                data: form_data,
+                beforeSend : function(){
+                    
+                     $("#carregabotao").hide();
+                     },
+                headers:{'Authentication':'Bearer 57027689-5'},
+                contentType: false,
+                cache: false,
+                processData: false,
+                async: true,
+                complete: function () {
+                    $("#carregagif").hide();
+                    $("#carregabotao").show();
+                      console.log("Complete!");
+                 },
+                success: function (data) {
+                    
+                   // document.getElementById("arquivo").value = "";
+                    //document.getElementById("titulo").value="";
+                    alert(data)
+                    console.log(data);
+                    
+                  setTimeout(carrega, 1000);
+                   
+
+                    //$("$carregagif").hide();
+                   
+                   
+                },
+                error: function(erro){
+                    alert("Arquivo não enviado, por favor tente novamente")
+                    //$("#carregagif").hide();
+                    
+                },
+            });
+            
+
+        }
+        function carrega(){
+           
+            window.location.href = "http://10.75.200.88:5150/historico";
+           // window.location.href = " http://localhost:5000/historico";
+
+        }
+ 
+        
+</script>
